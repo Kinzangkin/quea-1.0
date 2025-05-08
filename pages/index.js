@@ -83,11 +83,6 @@ export default function Home() {
               </Link>
             </li>
             <li>
-              <Link href="/admin" legacyBehavior>
-                <a>Admin</a>
-              </Link>
-            </li>
-            <li>
               <div className="search-container">
                 <input
                   type="text"
