@@ -7,11 +7,11 @@ export default function Home() {
         <title>QUEA</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../styles/style.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
       </Head>
 
       <main>
-        <img className="background" src="/media/background.jpeg" alt="" />
+        <img className="background" src="/image/background.jpeg" alt="" />
         <nav>
           <label>Logo</label>
           <ul>
@@ -24,12 +24,14 @@ export default function Home() {
               <div className="search-container">
                 <input type="text" className="search-input" id="search-input" placeholder="Search..." />
                 <button className="search-button" id="search-button">
-                  <img className="search-icon" src="/media/search.svg" />
+                  <img className="search-icon" src="/image/search.svg" />
                 </button>
               </div>
             </li>
           </ul>
         </nav>
+
+        
 
         <section>
           <div className="welcome">
@@ -44,7 +46,7 @@ export default function Home() {
 
         <section className="container">
           <div className="object-cont">
-            <img src="/media/Screenshot (133).png" alt="Render 1" />
+            <img src="/image/Screenshot (133).png" alt="Render 1" />
             <div>
               <h3>judul</h3>
               <p>Description</p>
@@ -53,7 +55,7 @@ export default function Home() {
         </section>
       </main>
 
-      <script src="//scrip.js"></script>
+      <script src="/js/scrip.js"></script>
     </>
   );
 }
