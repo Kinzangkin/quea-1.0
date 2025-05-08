@@ -1,0 +1,164 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+html {
+  scrollbar-width: none;
+}
+
+body {
+  background-color: black;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+body section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* -----navigation----- */
+
+nav {
+  position: fixed;
+  background-color: #1A1A1D;
+  height: 80px;
+  width: 100%;
+  top: 0;
+ z-index: 10;
+}
+
+label {
+  color: white;
+  line-height: 80px;
+  font-size: 35px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+
+nav ul {
+  float: right;
+  margin-right: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 5px;
+  line-height: 80px;
+}
+
+nav ul li a {
+  font-size: 17px;
+  color: white;
+  text-transform: uppercase;
+}
+
+/* -----search----- */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+}
+
+.search-input {
+  width: 100%;
+  height: 25px; 
+  padding: 10px 40px 10px 20px;
+  border: 2px solid #ffffff;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff; 
+}
+
+.search-input:focus {
+  border-color: #ffffff;
+}
+
+.search-button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent; 
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  padding: 5px; 
+}
+
+.search-button:hover {
+  background-color: rgba(255, 255, 255, 0.2); 
+}
+
+.search-icon {
+  width: 20px; 
+  height: 20px;
+}
+/* -----home----- */
+
+.welcome {
+  color: white;
+  z-index: 1;
+  position: fixed;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.container {
+  background-color: #1A1A1D;
+  z-index: 3;
+  position: relative;
+}
+
+.object-cont {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 300px; 
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.object-cont:hover {
+  transform: scale(1.05);
+}
+
+.object-cont img {
+  border-radius: 10px;
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+
+h3 {
+  color: white;
+  margin: 10px 0; 
+}
+
+p {
+  color: #ccc;
+}
