@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Fungsi untuk mengambil data dari server dan menampilkannya di index.html
 function fetchData() {
-  fetch("https://quea-project.vercel.app/media") // Update dengan URL Vercel
+  fetch("http://localhost:3000/media") // Mengarah ke server Express
     .then(response => response.json())
     .then(data => {
       const container = document.querySelector(".container");
@@ -39,21 +39,7 @@ document.getElementById("login-form").addEventListener("submit", function(event)
   }
 });
 
-function loadComponent(id, file) {
-  fetch(file)
-      .then(response => response.text())
-      .then(data => {
-          document.getElementById(id).innerHTML = data;
-      })
-      .catch(error => console.error(`Error loading ${file}:`, error));
-}
-
-// Panggil fungsi untuk memuat navbar dan footer
-document.addEventListener("DOMContentLoaded", function () {
-  loadComponent("navbar", "navbar.html");
-  loadComponent("footer", "footer.html");
-});
-
+// Fungsi untuk mencari data
 document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.querySelector('.search-input');
   const searchButton = document.querySelector('.search-button');
@@ -63,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (query === '') return;
 
     try {
-      const response = await fetch(`https://quea-project.vercel.app/search?q=${query}`); // Update dengan URL Vercel
+      const response = await fetch(`http://localhost:3000/search?q=${query}`); // Mengarah ke server Express
       const results = await response.json();
 
       if (results.length === 0) {
@@ -74,41 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
       displaySearchResults(results);
     } catch (error) {
       console.error('Error fetching search results:', error);
-    }
-  });
-});
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("search-input");
-  const searchButton = document.getElementById("search-button");
-
-  if (!searchInput || !searchButton) {
-    console.error("Error: Search input atau button tidak ditemukan. Periksa HTML!");
-    return;
-  }
-
-  function handleSearch() {
-    const query = searchInput.value.trim();
-    if (query === "") return;
-
-    fetch(`https://quea-project.vercel.app/search?q=${query}`) // Update dengan URL Vercel
-      .then((response) => response.json())
-      .then((results) => {
-        if (results.length === 0) {
-          alert("No results found");
-          return;
-        }
-        displaySearchResults(results);
-      })
-      .catch((error) => console.error("Error fetching search results:", error));
-  }
-
-  searchButton.addEventListener("click", handleSearch);
-  searchInput.addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      handleSearch();
     }
   });
 });

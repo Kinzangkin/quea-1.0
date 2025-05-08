@@ -11,7 +11,7 @@ export default function Home() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch("http://localhost:3000/image"); // langsung ke server Express
+      const res = await fetch("http://localhost:3000/media"); // Mengarah ke server Express
       const data = await res.json();
       setItems(data);
     } catch (err) {

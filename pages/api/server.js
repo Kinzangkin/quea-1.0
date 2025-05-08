@@ -1,14 +1,3 @@
-const express = require('express');
-const mysql = require('mysql2');
-const cors = require('cors');
-const path = require('path');
-
-const app = express();
-const port = 3000;
-
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 require('dotenv').config();
 
@@ -20,7 +9,6 @@ const db = mysql.createConnection({
   port: process.env.DB_PORT
 });
 
-
 // Koneksi ke database
 db.connect((err) => {
   if (err) {
@@ -28,11 +16,6 @@ db.connect((err) => {
     return;
   }
   console.log('Connected to local MySQL database');
-});
-
-// Serve HTML file (admin.html)
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'admin.html'));
 });
 
 // Endpoint untuk mengambil semua data
@@ -44,42 +27,6 @@ app.get('/media', (req, res) => {
       return res.status(500).json({ error: 'Database error' });
     }
     res.json(results);
-  });
-});
-
-// Endpoint untuk menambahkan data
-app.post('/submit', (req, res) => {
-  const { title, description, file_link, thumbnail } = req.body;
-  if (!title || !description || !file_link || !thumbnail) {
-    return res.status(400).json({ error: 'All fields are required!' });
-  }
-
-  const query = 'INSERT INTO media (title, description, file_link, thumbnail) VALUES (?, ?, ?, ?)';
-  db.query(query, [title, description, file_link, thumbnail], (err, result) => {
-    if (err) {
-      console.error('Error inserting data:', err);
-      return res.status(500).json({ error: 'Database error' });
-    }
-    res.json({ message: 'Data inserted successfully!', id: result.insertId });
-  });
-});
-
-// Endpoint untuk menghapus data berdasarkan ID
-app.delete('/media/:id', (req, res) => {
-  const mediaId = req.params.id;
-  const query = 'DELETE FROM media WHERE id = ?';
-
-  db.query(query, [mediaId], (err, result) => {
-    if (err) {
-      console.error('Error deleting data:', err);
-      return res.status(500).json({ error: 'Database error' });
-    }
-
-    if (result.affectedRows === 0) {
-      return res.status(404).json({ error: 'Data not found' });
-    }
-
-    res.json({ message: 'Data deleted successfully' });
   });
 });
 
